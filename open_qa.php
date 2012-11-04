@@ -99,6 +99,7 @@
                             <li><a href="https://github.com/eucalyptus">Euca @GitHub</a></li>
                             <li class="divider"></li>
                             <li><a href="https://github.com/eucalyptus/open-qa">Open-QA @GitHub</a></li>
+			    <li><a href="https://github.com/eucalyptus-qa">Euca-QA @GitHub</a></li>
                             <li><a href="https://github.com/eucalyptus/eutester">Eutester @GitHub</a></li>
                         </ul>
                     </li>
