@@ -1,0 +1,121 @@
+### HOW TO INSTALL OPEN_QA ON AWS
+
+=== AMAZON LINUX AMI ===
+
+Step 1. Log in to AWS Instance
+
+Ex.
+
+ssh -i <my_key> ec2-user@ec2-##-###-###-###.us-####-#.compute.amazonaws.com
+
+Step 2. Install git
+
+sudo yum -y install git
+
+Step 3. Git Clone open_qa Project
+
+git clone git://github.com/kyolee310/open_qa.git
+
+Step 4. Run the Installer
+
+cd ./open_qa/script/
+
+./open_qa-installer.py -t amazon -e <your_email>
+
+Step 5. Using a web-browser, check out the link
+
+http://c2-##-###-###-###.us-####-#.compute.amazonaws.com/open_qa.php
+
+Ensure that you can see the tree
+
+Step 6. Transfer the Cache Files from QA SERVER
+
+On QA-SERVER's /root/open_qa_transfer directory,
+
+Run the script "open_qa_data_create_a_tarball.pl"
+
+./open_qa_data_create_a_tarball.pl
+
+Step 7. COPY THE TARBALL OVER TO THE AWE INSTANCE
+
+scp ./cache_storage_for_open_qa.tar.gz ec2-user@ec2-##-###-##-###.us-####-#.compute.amazonaws.com::~/.
+
+Step 8. UNTAR IT
+
+sudo tar -zxvf ./cache_storage_for_open_qa.tar.gz
+
+Step 9. TRANSFER THE FILES TO /var/www/html/webcache/.
+
+sudo cp -r ./cache_storage_for_open_qa/* /var/www/html/webcache/.
+
+Step 10. Using a web-broswer, check out the link and validate that open_qa is up and running
+
+http://c2-##-###-###-###.us-####-#.compute.amazonaws.com/open_qa.php
+
+
+
+
+###### MANUAL STEPS BELOW ######
+
+=== AMAZON LINUX AMI ===
+
+### LOGIN AS USER ec2-user
+ssh -i <mykey> ec2-user@ec2-50-112-23-171.us-west-2.compute.amazonaws.com
+
+### UPDATE THE IMAGE
+sudo yum -y update
+
+### REBOOT to LOAD NEW KERNEL
+uname -r
+sudo reboot
+uname -r
+
+
+### INSTAL APACHE2
+sudo yum -y install httpd
+sudo chkconfig httpd on
+sudo service httpd start
+sudo netstat -tulpn | grep :80
+sudo httpd -V
+
+### ADJUST TO ALLOW PRE-FORKING
+sudo vim /etc/sysconfig/httpd 
+    HTTPD=/usr/sbin/httpd.worker
+
+### ADJUST WWW HOME DIR
+sudo vim /etc/httpd/conf/httpd.conf
+    ServerAdmin kyolee310@gmail.com
+
+
+### INSTALL PHP and PHP-ZTS for PRE-FORKING
+sudo yum install php
+
+### ADJUST TIME ZONE
+sudo ln --symbolic --force /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+sudo service ntpd restart
+
+### RESTART HTTPD
+sudo service httpd restart
+
+### VERIFY THAT WWW IS UP AND RUNNING
+ex. On a Browsers:
+http://ec2-50-16-81-239.compute-1.amazonaws.com
+
+### INSTALL OTHER SERVICES
+sudo yum -y install git
+
+...
+
+=== RHEL 6 ===
+
+### ADD FOLLOWING STEPS FROM === AMAZON LINIX AMI INSTRUCTION
+
+### INSTALL SYSTEM-CONFIG-FIREWALL AND OPEN PORT 80(HTTP)
+yum install system-config-firewall
+system-config-firewall
+
+### INSTALL PHP and PHP-ZTS for PRE-FORKING
+yum install php
+yum install php-zts
+/etc/init.d/httpd restart
+

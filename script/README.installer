@@ -1,0 +1,6 @@
+
+=== USAGE ===
+./open_qa-installer.py -t amazon -e <email>
+
+./open_qa-installer.py -t rhel6 -e <email>
+

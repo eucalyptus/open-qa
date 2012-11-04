@@ -1,0 +1,19 @@
+
+body {
+	padding-top: 40px;
+	padding-bottom: 40px;
+	padding-left: 20px;
+}
+
+.pull-left { float: left; }
+
+.pull-right { float: right; }
+
+.top-layer{ z-index: 100; }
+
+.bottom-layer{ z-index: 10; }
+
+#tree { width:327px; height:380px; background:#000000; opacity:1.0; display:block; }
+#tree { float: left; position: fixed; bottom:2px; left:8px; }   
+
+

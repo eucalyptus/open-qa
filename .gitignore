@@ -1,0 +1,3 @@
+*.cache
+this_date*.lst
+.bash*
