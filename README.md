@@ -5,10 +5,11 @@ Welcome to the Eucalyptus Open QA project.  For more information, see the wiki:
 
 https://github.com/eucalyptus/open-qa/wiki
 
-h2. Meetings log:
-- [Oct 12](http://meetbot.eucalyptus.com/meeting-logs/eucalyptus-meeting/2012-10-12/eucalyptus-meeting.2012-10-12-21.09.html) ([full log](http://meetbot.eucalyptus.com/meeting-logs/eucalyptus-meeting/2012-10-12/eucalyptus-meeting.2012-10-12-21.09.log.html))
+## MEETING LOG
+   
+   [Oct 12] (http://meetbot.eucalyptus.com/meeting-logs/eucalyptus-meeting/2012-10-12/eucalyptus-meeting.2012-10-12-21.09.html) ([full log](http://meetbot.eucalyptus.com/meeting-logs/eucalyptus-meeting/2012-10-12/eucalyptus-meeting.2012-10-12-21.09.log.html))
 
-# Open QA Frontend Beta
+## Open QA Frontend Beta
 
 http://ec2-50-112-61-121.us-west-2.compute.amazonaws.com/open_qa.php
 
