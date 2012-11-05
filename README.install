@@ -28,27 +28,21 @@ http://c2-##-###-###-###.us-####-#.compute.amazonaws.com/open_qa.php
 
 Ensure that you can see the tree
 
-Step 6. Transfer the Cache Files from QA SERVER
+Step 6. DOWNLOAD THE LATEST FRONTEND DATA
 
-On QA-SERVER's /root/open_qa_transfer directory,
+cd ~
+git clone git://github.com/eucalyptus/open-qa-frontend-data.git
+cd ./open-qa-frontend-data
 
-Run the script "open_qa_data_create_a_tarball.pl"
-
-./open_qa_data_create_a_tarball.pl
-
-Step 7. COPY THE TARBALL OVER TO THE AWE INSTANCE
-
-scp ./cache_storage_for_open_qa.tar.gz ec2-user@ec2-##-###-##-###.us-####-#.compute.amazonaws.com::~/.
-
-Step 8. UNTAR IT
+Step 7. UNTAR IT
 
 sudo tar -zxvf ./cache_storage_for_open_qa.tar.gz
 
-Step 9. TRANSFER THE FILES TO /var/www/html/webcache/.
+Step 8. TRANSFER THE FILES TO /var/www/html/webcache/.
 
 sudo cp -r ./cache_storage_for_open_qa/* /var/www/html/webcache/.
 
-Step 10. Using a web-broswer, check out the link and validate that open_qa is up and running
+Step 9. Using a web-broswer, check out the link and validate that open_qa is up and running
 
 http://c2-##-###-###-###.us-####-#.compute.amazonaws.com/open_qa.php
 
