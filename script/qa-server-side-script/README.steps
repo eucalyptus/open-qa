@@ -1,0 +1,40 @@
+
+== on TEST-SERVER ==
+
+1. GENERATE TODAY'S CACHE
+
+./generate_cache_for_today.pl 11-03
+
+2. GENERATE TARBALL
+
+./open_qa_data_create_a_tarball.pl
+
+3. CLEAR TODAY'S CACHE
+
+./clear_cache_for_today.pl 11-03
+
+
+
+== on EC2 INSTANCE ==
+
+1. REMOVE PREVIOUS CACHE DIR
+
+sudo rm -fr open-qa-frontend-data
+
+2. GIT CLONE open-qa-frontend-data
+
+git clone git://github.com/eucalyptus/open-qa-frontend-data.git
+
+3. GO TO open-qa-frontend-data DIRECTORY
+
+cd ./open-qa-frontend-data
+
+4. UNTAR IT
+
+sudo tar -zxvf ./cache_storage_for_open_qa.tar.gz
+
+5. TRANSFER THE FILES TO /var/www/html/webcache/.
+
+sudo cp -r ./cache_storage_for_open_qa/* /var/www/html/webcache/.
+
+

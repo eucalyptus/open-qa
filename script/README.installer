@@ -1,6 +1,16 @@
 
-=== USAGE ===
+=== INSTALLER USAGE ===
+
 ./open_qa-installer.py -t amazon -e <email>
 
 ./open_qa-installer.py -t rhel6 -e <email>
+
+
+=== NEXT STEPS: DOWNLOAD DATA ===
+
+cd ~
+git clone git://github.com/eucalyptus/open-qa-frontend-data.git
+cd ./open-qa-frontend-data
+sudo tar -zxvf ./cache_storage_for_open_qa.tar.gz
+sudo cp -r ./cache_storage_for_open_qa/* /var/www/html/webcache/.
 

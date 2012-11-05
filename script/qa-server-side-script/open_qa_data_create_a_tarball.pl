@@ -107,6 +107,20 @@ print "tar -zcf " . $storage_dir . ".tar.gz " . $storage_dir . "\n";
 system("tar -zcf " . $storage_dir . ".tar.gz " . $storage_dir);
 
 print "\n";
+print "mv -f " . $storage_dir . ".tar.gz /root/open-qa-frontend-data/.\n";
+system("mv -f " . $storage_dir . ".tar.gz /root/open-qa-frontend-data/.");
+
+print "\n";
+print "cd /root/open-qa-frontend-data/; git add .\n";
+system("cd /root/open-qa-frontend-data/; git add .");
+
+print "cd /root/open-qa-frontend-data/; git commit\n";
+system("cd /root/open-qa-frontend-data/; git commit");
+
+print "cd /root/open-qa-frontend-data/; git push\n";
+system("cd /root/open-qa-frontend-data/; git push");
+
+print "\n";
 print "DONE\n";
 print "\n";
 
@@ -115,29 +129,31 @@ print "================== NEXT STEPS ========================\n";
 print "\n";
 
 print "\n";
-print "1. COPY YOUR PUB KEY TO THE AWS INSTANCE's ~/.ssh/authorized_keys\n";
-print "\n";
-print "cat ~/.ssh/id_rsa.pub\n";
-print "\n";
-system("cat ~/.ssh/id_rsa.pub");
+print "1. LOG ON TO YOUR EC2 INSTANCE\n";
 print "\n";
 
 print "\n";
-print "2. COPY THE TARBALL OVER TO THE AWE INSTANCE\n";
+print "2. GIT CLONE open-qa-frontend-data\n";
 print "\n";
-print "scp $storage_dir.tar.gz ec2-user\@ec2-##-###-##-###.us-####-#.compute.amazonaws.com::~/.\n";
+print "git clone git://github.com/eucalyptus/open-qa-frontend-data.git\n";
 print "\n";
 
 print "\n";
-print "3. UNTAR IT\n";
+print "3. GO TO open-qa-frontend-data DIRECTORY\n";
+print "\n";
+print "cd ./open-qa-frontend-data\n";
+print "\n";
+
+print "\n";
+print "4. UNTAR IT\n";
+print "\n";
 print "sudo tar -zxvf $storage_dir.tar.gz\n";
 print "\n";
 
-print "4. TRANSFER THE FILES TO /var/www/html/webcache/.\n";
+print "5. TRANSFER THE FILES TO /var/www/html/webcache/.\n";
 print "\n";
 print "sudo cp -r $storage_dir/* /var/www/html/webcache/.\n";
 print "\n";
-
 
 exit(0);
 
