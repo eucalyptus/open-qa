@@ -4,6 +4,7 @@ use strict;
 
 my $cache_dir = "/tmp/temp/webcache";
 my $storage_dir = "./cache_storage_for_open_qa";
+my $this_date = "UNKNOWN";
 my $filter = "_NONE";
 
 my @testname_array;
@@ -11,8 +12,13 @@ my @uid_array;
 
 my $line;
 
+###	CHECK FOR INPUT DATE
+if( @ARGV > 0 ){
+	$this_date = shift @ARGV;
+};
+
 ### 	CHECK FOR FILTER INPUT
-if( @ARGV > 1 ){
+if( @ARGV > 0 ){
 	$filter = shift @ARGV;
 	print "\n";
 	print "FILTER IS SET TO: $filter\n";
@@ -114,8 +120,9 @@ print "\n";
 print "cd /root/open-qa-frontend-data/; git add .\n";
 system("cd /root/open-qa-frontend-data/; git add .");
 
-print "cd /root/open-qa-frontend-data/; git commit\n";
-system("cd /root/open-qa-frontend-data/; git commit");
+my $git_message = "Refreshed Cache Data on $this_date";
+print "cd /root/open-qa-frontend-data/; git commit -m \"$git_message\"\n";
+system("cd /root/open-qa-frontend-data/; git commit -m \"$git_message\"");
 
 print "cd /root/open-qa-frontend-data/; git push\n";
 system("cd /root/open-qa-frontend-data/; git push");
