@@ -79,7 +79,7 @@ def main():
 	cmd = "sudo service httpd restart"
 	run_cmd(cmd)
 
-	cmd = "sudo cp -r ../../open_qa/. /var/www/html/."
+	cmd = "sudo cp -r ../../open-qa/. /var/www/html/."
 	run_cmd(cmd)
 
 	print
