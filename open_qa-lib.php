@@ -57,6 +57,18 @@ function print_hidden_div_block_for_inifiniti_scrolling(){
         return;
 };
 
+function get_developer_icon($user){
+	$jpg_name = "./image/developer/".$user.".jpg";
+        $png_name = "./image/developer/".$user.".png";
+
+	if( file_exists($jpg_name)){
+		return $jpg_name;
+        }else if( file_exists($png_name)){
+                return $png_name;
+        };
+        return "./image/euca_icon.jpg";
+};
+
 function print_test_result_well($test_date, $test_time, $testname, $uid, $sequence, $os, $git_hash, $test_stage, $user, $test_date){
 
 #	$test_id = $testname . "_UID-" . $uid;
@@ -76,12 +88,10 @@ function print_test_result_well($test_date, $test_time, $testname, $uid, $sequen
 	print "<ul class=\"thumbnails\">";
 	print "<li class=\"span12\">";
 	print "<a href=\"#\" class=\"thumbnail\">";
-	if( $user == "UI" || $user == "qa" ){
-	#	print "<img class=\"img-rounded\" src=\"./r2d2.png\" style=\"height: 40px;\">";
-		print "<img class=\"img-rounded\" src=\"./image/euca_icon.jpg\" alt=\"\">";
-	}else{
-		print "<img class=\"img-rounded\" src=\"./image/euca_icon.jpg\" alt=\"\">";
-	};
+
+	$icon = get_developer_icon($user);
+	print "<img class=\"img-rounded\" src=\"" . $icon . "\" alt=\"\">";
+
 	print "</a>";
 	print "</li>";
 	print "</ul>";
@@ -105,7 +115,7 @@ function print_test_result_well($test_date, $test_time, $testname, $uid, $sequen
 	print "<a href=\"$test_result_url\" class=\"btn btn-mini btn-success\" style=\"margin-bottom: 5px;\"><i class=\"icon-leaf icon-white\"></i> View</a>";
 	print "</a>";
 
-	if( preg_match("/^UI/", $testname) || preg_match("/^GA/", $testname) || preg_match("/^qa/", $testname) ){ 
+	if( preg_match("/^UI/", $testname) || preg_match("/^CI/", $testname) || preg_match("/^GA/", $testname) || preg_match("/^qa/", $testname) ){ 
 		print "&nbsp;<span class=\"label label-warning\">QA</span>";
 	};
 
@@ -133,7 +143,7 @@ function print_test_result_well($test_date, $test_time, $testname, $uid, $sequen
 		print "&nbsp;<span class=\"label label-default\">WINDOWS</span>";
 	};
 
-	if( preg_match("/-ha-/", $sequence) ){ 
+	if( preg_match("/-ha-/", $testname) ||  preg_match("/-ha-/", $sequence) ){ 
 		print "&nbsp;<span class=\"label label-default\">HA</span>";
 	};
 
