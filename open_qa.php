@@ -28,6 +28,10 @@
 
 <script type="text/javascript" src="js/open_qa.js"></script> 
 
+<!-- TWITTER BUTTON JS -->
+
+<script type="text/javascript" src="js/twitter_button.js"></script> 
+
 </head>
 
 <body>
